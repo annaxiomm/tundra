@@ -1,4 +1,4 @@
-import { windows } from "./wm";
+import { openApp, windows } from "./wm";
 
 export function updateStatusBar() {
   let now = new Date();
@@ -7,5 +7,5 @@ export function updateStatusBar() {
 }
 
 document.getElementById("os_name").addEventListener("click", () => {
-  windows["welcome"].openWindow();
+  openApp("welcome");
 });
