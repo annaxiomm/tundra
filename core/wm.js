@@ -1,6 +1,6 @@
 // caribou - the official window manager of tundra
 
-import { apps } from "./apps";
+import { apps } from "./apps.js";
 
 export let windows = [];
 let highestZ = 1;

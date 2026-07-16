@@ -1,4 +1,4 @@
-import { Window } from "../core/window";
+import { Window } from "../core/window.js";
 
 export default class WelcomeApp extends Window {
   constructor() {

@@ -1,4 +1,4 @@
-import { openApp, windows } from "./wm";
+import { openApp, windows } from "./wm.js";
 
 export function updateStatusBar() {
   let now = new Date();

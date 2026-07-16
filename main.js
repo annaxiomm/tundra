@@ -1,5 +1,5 @@
-import { updateStatusBar } from "./core/statusbar";
-import { initCaribou } from "./core/wm";
+import { updateStatusBar } from "./core/statusbar.js";
+import { initCaribou } from "./core/wm.js";
 
 setInterval(() => {
   fixedUpdate();
