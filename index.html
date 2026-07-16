@@ -4,24 +4,47 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="styles/main.css" rel="stylesheet" />
+        <link href="styles/window.css" rel="stylesheet" />
         <title>tundra</title>
     </head>
     <body>
         <div id="screen">
             <div id="desktop">
-                <div class="window">
-                    <h1>welcome to tundra</h1>
-                    <p>
-                        the world's worst operating system, localised entirely
-                        within your own web browser!
-                    </p>
+                <div class="window" id="welcome_window">
+                    <div class="header">
+                        <div class="left">welcome !</div>
+                        <div class="right">
+                            <span class="close_button">x</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h1>welcome to tundraOS!</h1>
+                        <p>
+                            the world's worst operating system, localised
+                            entirely within your web browser!
+                        </p>
+                    </div>
+                </div>
+                <div class="window" id="other_window">
+                    <div class="header">
+                        <div class="left">hi there !</div>
+                        <div class="right">
+                            <span class="close_button">x</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h1>this is another window !</h1>
+                        <p>
+                            i'm completely freestyling this whole thing: help!
+                        </p>
+                    </div>
                 </div>
             </div>
             <div id="statusbar">
-                <div id="left">
-                    <span>tundraOS v0.1.0 (alpha)</span>
+                <div class="left">
+                    <span id="os_name">tundraOS v0.1.0 (alpha)</span>
                 </div>
-                <div id="right">
+                <div class="right">
                     <span id="status_time"></span>
                 </div>
             </div>
