@@ -21,10 +21,12 @@ export function openApp(appname) {
     return;
   }
 
-  let instance = new apps[appname](++lastID);
-  windows[lastID] = instance;
+  let id = ++lastID;
 
-  focusWindow(lastID);
+  let instance = new apps[appname](id);
+  windows[id] = instance;
+
+  focusWindow(id);
 }
 
 document.addEventListener("requestfocus", (e) => {
