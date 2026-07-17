@@ -32,12 +32,18 @@ document.addEventListener("requestfocus", (e) => {
 })
 
 document.addEventListener("requestclose", (e) => {
+  if (!windows[e.detail.window]) {
+    console.warn(`TUNDRA: tried to close missing window ${windowID}`);
+  }
   windows[e.detail.window].div.remove();
   delete windows[e.detail.window];
   console.log(windows);
 })
 
 function focusWindow(windowID) {
+  if (!windows[windowID]) {
+    console.warn(`TUNDRA: tried to focus missing window ${windowID}`);
+  }
   Object.entries(windows).forEach(([key, value]) => {
     value.div.classList.remove("active-window");
   })
