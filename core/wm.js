@@ -13,7 +13,7 @@ export function initCaribou() {
 export function openApp(appname) {
   if (!Object.hasOwn(apps, appname)) {
     console.error(
-      `TUNDRA: Attempting to open app ${appname} which doesn't exist`,
+      `TUNDRA: Attempting to open app "${appname}" which doesn't exist`,
     );
     return;
   }

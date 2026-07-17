@@ -6,6 +6,15 @@ export function updateStatusBar() {
   document.getElementById("status_time").innerText = formatted_date;
 }
 
-document.getElementById("os_name").addEventListener("click", () => {
+document.getElementById("app-welcome").addEventListener("click", () => {
   openApp("welcome");
+});
+
+document.getElementById("app-notes").addEventListener("click", () => {
+  openApp("notes");
+});
+
+document.getElementById("app-image").addEventListener("click", () => {
+  console.log("oh hello");
+  openApp("images");
 });

@@ -1,8 +1,16 @@
+@font-face {
+    font-family: "Cozette";
+    src: url(../fonts/cozette.ttf);
+}
+
 body,
 html {
     margin: 0;
     padding: 0;
     overflow: hidden;
+
+    font-family: "Cozette";
+    font-weight: normal;
 }
 
 #screen {
@@ -16,12 +24,6 @@ html {
     background: url(../images/wallpapers/pariwhero.png);
     background-size: cover;
     background-position-y: 50%;
-}
-
-#statusbar {
-    display: flex;
-    padding: 5px;
-    user-select: none;
 }
 
 .right {

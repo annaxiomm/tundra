@@ -1,8 +1,21 @@
+/*
+APP CREATION RULES
+------------------
+
+- all apps must have a unique ID that is all lowercase without spaces
+(i.e. able to be used as a CSS class)
+- all classes used within an app must follow the form [id]-[classname]
+  - e.g. notes-note, welcome-header, image-imagecontent etc
+
+*/
+
+
 let highestZ = 1;
 
 export class Window {
   constructor({
     title = "Untitled",
+    id = "untitled-window",
     width = 400,
     height = 300,
     x = 100,
@@ -10,13 +23,13 @@ export class Window {
   } = {}) {
     // create DOM
     this.div = document.createElement("div");
-    this.div.className = "window";
+    this.div.className = `window ${id}`;
 
     this.div.innerHTML = `
 <div class="header">
-  <div class="window_title"></div>
-  <div class="window_buttons">
-    <span class="close_window">x</span>
+  <div class="window-title"></div>
+  <div class="window-buttons">
+    <span class="close-window">x</span>
   </div>
 </div>
 <div class="content"></div>
@@ -26,9 +39,9 @@ export class Window {
 
     // elements
     this.header = this.div.querySelector(".header");
-    this.closeButton = this.div.querySelector(".close_window");
+    this.closeButton = this.div.querySelector(".close-window");
     this.content = this.div.querySelector(".content");
-    this.title = this.div.querySelector(".window_title");
+    this.title = this.div.querySelector(".window-title");
 
     // position and width
     const rect = this.div.getBoundingClientRect();
@@ -84,8 +97,6 @@ export class Window {
   }
 
   closeWindow() {
-    this.open = false;
-    this.div.style.display = "none";
-    console.log("wow");
+    this.div.remove();
   }
 }

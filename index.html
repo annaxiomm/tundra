@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="styles/main.css" rel="stylesheet" />
         <link href="styles/window.css" rel="stylesheet" />
+        <link href="styles/statusbar.css" rel="stylesheet" />
+        <link href="styles/apps.css" rel="stylesheet" />
         <title>tundra</title>
     </head>
     <body>
@@ -12,10 +14,19 @@
             <div id="desktop"></div>
             <div id="statusbar">
                 <div class="left">
-                    <span id="os_name">tundraOS v0.1.0 (alpha)</span>
+                    <div id="appdrawer-container" class="statusbar-item">
+                        <div id="appdrawer-button">tundraOS v0.1.0 (alpha)</div>
+                        <div id="appdrawer">
+                            <ul>
+                                <li id="app-welcome">welcome</li>
+                                <li id="app-notes">notes</li>
+                                <li id="app-image">random image</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="right">
-                    <span id="status_time"></span>
+                    <div id="status_time" class="statusbar-item"></div>
                 </div>
             </div>
         </div>
