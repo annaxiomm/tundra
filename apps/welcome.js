@@ -1,7 +1,7 @@
 import { Window } from "../core/window.js";
 
 export default class WelcomeApp extends Window {
-  constructor() {
+  constructor(windowID) {
     super({
       title: "welcome !",
       id: "welcome",
@@ -9,7 +9,7 @@ export default class WelcomeApp extends Window {
       height: 230,
       x: 120,
       y: 80,
-    });
+    }, windowID);
 
     this.content.innerHTML = `
 <h1>welcome to tundra !</h1>

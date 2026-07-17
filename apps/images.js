@@ -1,7 +1,7 @@
 import { Window } from "../core/window.js";
 
 export default class ImagesApp extends Window {
-  constructor() {
+  constructor(windowID) {
     super({
       title: "random image",
       id: "images",
@@ -9,7 +9,7 @@ export default class ImagesApp extends Window {
       height: 400,
       x: 120,
       y: 80,
-    });
+    }, windowID);
     let images = [
       "cow",
       "fire",

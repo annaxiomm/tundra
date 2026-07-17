@@ -2,12 +2,15 @@
 
 import { apps } from "./apps.js";
 
-export let windows = [];
+export let windows = {};
+let lastID = 0;
+
 let highestZ = 1;
 
+let focusedWindow = null;
+
 export function initCaribou() {
-  let welcome = new apps["welcome"]();
-  windows.push[welcome];
+  openApp("welcome");
 }
 
 export function openApp(appname) {
@@ -18,6 +21,28 @@ export function openApp(appname) {
     return;
   }
 
-  let instance = new apps[appname]();
-  windows.push[instance];
+  let instance = new apps[appname](++lastID);
+  windows[lastID] = instance;
+
+  focusWindow(lastID);
+}
+
+document.addEventListener("requestfocus", (e) => {
+  focusWindow(e.detail.window);
+})
+
+document.addEventListener("requestclose", (e) => {
+  windows[e.detail.window].div.remove();
+  delete windows[e.detail.window];
+  console.log(windows);
+})
+
+function focusWindow(windowID) {
+  Object.entries(windows).forEach(([key, value]) => {
+    value.div.classList.remove("active-window");
+  })
+
+  windows[windowID].div.classList.add("active-window");
+
+  windows[windowID].div.style.zIndex = ++highestZ;
 }

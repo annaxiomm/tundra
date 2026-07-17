@@ -7,10 +7,12 @@ APP CREATION RULES
 - all classes used within an app must follow the form [id]-[classname]
   - e.g. notes-note, welcome-header, image-imagecontent etc
 
+
+
+OTHER WINDOW STUFF
+------------------
+- windows should not manage themselves: they should send a request to the windowmanager first
 */
-
-
-let highestZ = 1;
 
 export class Window {
   constructor({
@@ -20,7 +22,9 @@ export class Window {
     height = 300,
     x = 100,
     y = 100,
-  } = {}) {
+  } = {}, windowID) {
+    this.windowID = windowID;
+
     // create DOM
     this.div = document.createElement("div");
     this.div.className = `window ${id}`;
@@ -29,7 +33,7 @@ export class Window {
 <div class="header">
   <div class="window-title"></div>
   <div class="window-buttons">
-    <span class="close-window">x</span>
+    <span class="close-window window-button">×</span>
   </div>
 </div>
 <div class="content"></div>
@@ -67,8 +71,11 @@ export class Window {
     });
 
     this.div.addEventListener("mousedown", () => {
-      console.log("clicked!");
-      this.div.style.zIndex = ++highestZ; // highest Z index increases arbitrarily
+
+      this.div.dispatchEvent(new CustomEvent("requestfocus", {
+        bubbles: true,
+        detail: {window: this.windowID}
+      }))
     });
   }
 
@@ -97,6 +104,11 @@ export class Window {
   }
 
   closeWindow() {
-    this.div.remove();
+    this.div.dispatchEvent(new CustomEvent("requestclose", {
+      bubbles: true,
+      detail: {
+        window: this.windowID,
+      }
+    }))
   }
 }

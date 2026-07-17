@@ -1,7 +1,7 @@
 import { Window } from "../core/window.js";
 
 export default class NotesApp extends Window {
-  constructor() {
+  constructor(windowID) {
     super({
       title: "notes",
       id: "notes",
@@ -9,7 +9,7 @@ export default class NotesApp extends Window {
       height: 300,
       x: 120,
       y: 80,
-    });
+    }, windowID);
 
     let note_content = `
 TODO:<br/>
