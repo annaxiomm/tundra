@@ -6,6 +6,8 @@ an entire (?) operating system localised entirely within your browser!
 - a notes app with a TODO list and a changelog
 - a collection of images taken by [yours truly](https://github.com/annaxiomm)
 - and thats it so far, but many more are to come soon !
+## changelog
+[see here](CHANGELOG.md)
 ## credits
 - [hack club](https://hackclub.com) for inspiring me to make this
 - [the-moonwitch](https://github.com/the-moonwitch) for their lovely font "Cozette"
