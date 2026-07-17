@@ -1,0 +1,35 @@
+#statusbar {
+    display: flex;
+    user-select: none;
+    z-index: 9999;
+    background-color: whitesmoke;
+}
+
+.statusbar-item {
+    padding: 5px;
+}
+
+#appdrawer-container {
+    display: inline-block;
+    position: relative;
+}
+
+#appdrawer {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    z-index: 9999;
+    bottom: 100%;
+    left: 0%;
+    padding: 10px;
+}
+
+#appdrawer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#appdrawer-container:hover #appdrawer {
+    display: block;
+}

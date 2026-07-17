@@ -1,0 +1,13 @@
+.notes-notes {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    resize: none;
+    background: white;
+    padding: 5px;
+}
+
+.notes-notes:focus {
+    outline: none;
+}

@@ -1,0 +1,12 @@
+.images .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.images-image {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+}
