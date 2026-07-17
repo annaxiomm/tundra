@@ -1,6 +1,5 @@
 .window {
-    border: solid;
-    border-radius: 15px;
+    border: solid 2px green;
     position: absolute;
     top: 100px;
     left: 100px;
