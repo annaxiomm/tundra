@@ -1,6 +1,6 @@
 # tundra
 an entire (?) operating system localised entirely within your browser!
-![a screenshot of an OS desktop](images/promo.png)
+![a screenshot of an OS desktop](public/images/promo.png)
 ## features
 - a nice welcome
 - a notes app with a TODO list and a changelog
