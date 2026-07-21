@@ -9,6 +9,10 @@ let highestZ = 1;
 
 let focusedWindow = null;
 
+const windowsChangedEvent = new CustomEvent("windowschanged", {
+  bubbles: true
+})
+
 export function initCaribou() {
   openApp("welcome");
 }
@@ -27,6 +31,11 @@ export function openApp(appname) {
   windows[id] = instance;
 
   focusWindow(id);
+  document.dispatchEvent(windowsChangedEvent);
+}
+
+export function getOpenWindows() {
+  return windows;
 }
 
 document.addEventListener("requestfocus", (e) => {
@@ -39,7 +48,7 @@ document.addEventListener("requestclose", (e) => {
   }
   windows[e.detail.window].div.remove();
   delete windows[e.detail.window];
-  console.log(windows);
+  document.dispatchEvent(windowsChangedEvent);
 })
 
 function focusWindow(windowID) {

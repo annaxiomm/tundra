@@ -1,4 +1,4 @@
-import { openApp, windows } from "./wm.js";
+import { openApp, getOpenWindows } from "./wm.js";
 
 export function updateStatusBar() {
   let now = new Date();
@@ -17,4 +17,24 @@ document.getElementById("app-notes").addEventListener("click", () => {
 document.getElementById("app-image").addEventListener("click", () => {
   console.log("oh hello");
   openApp("images");
+});
+
+function updateWindowList() {
+  let windowList = document.getElementById("window-list");
+  let windows = getOpenWindows();
+
+  Array.from(windowList.children).forEach((child) => {
+    child.remove();
+  })
+
+  Object.entries(windows).forEach(([id, window]) => {
+    let element = document.createElement("div");
+    element.className = "window-list-item";
+    element.innerText = window.title;
+    windowList.appendChild(element);
+  })
+}
+
+document.addEventListener("windowschanged", () => {
+  updateWindowList();
 });

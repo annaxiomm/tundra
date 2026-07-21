@@ -1,12 +1,18 @@
 #statusbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     user-select: none;
     z-index: 9999;
     background-color: whitesmoke;
 }
 
 .statusbar-item {
-    padding: 5px;
+    padding: 6px;
+}
+
+#status-middle {
+    min-width: 0;
+    overflow: hidden;
 }
 
 #appdrawer-container {
@@ -32,4 +38,23 @@
 
 #appdrawer-container:hover #appdrawer {
     display: block;
+}
+
+#window-list {
+    display: flex;
+    gap: 2px;
+    padding: 0;
+    margin: 2px;
+    min-width: 0;
+    overflow-x: scroll;
+}
+
+.window-list-item {
+    padding: 2px;
+    flex: 0 0 125px;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+    box-sizing: border-box;
 }
