@@ -45,17 +45,18 @@ export class Window {
     this.header = this.div.querySelector(".header");
     this.closeButton = this.div.querySelector(".close-window");
     this.content = this.div.querySelector(".content");
-    this.title = this.div.querySelector(".window-title");
+    this.titleElement = this.div.querySelector(".window-title");
 
-    // position and width
+    // position, width, and other metadata
     const rect = this.div.getBoundingClientRect();
     this.x = rect.left;
     this.y = rect.top;
+    this.title = title;
 
     this.div.style.width = `${width}px`;
     this.div.style.height = `${height}px`;
 
-    this.title.innerText = title;
+    this.titleElement.innerText = title;
 
     // click events
     this.header.addEventListener("mousedown", (e) => {
@@ -66,7 +67,11 @@ export class Window {
       this.stopDrag();
     });
 
-    this.closeButton.addEventListener("click", () => {
+    this.closeButton.addEventListener("mousedown", (e) => {
+      e.stopPropagation(); // so that the window doesn't focus just before being closed
+    })
+
+    this.closeButton.addEventListener("click", (e) => {
       this.closeWindow();
     });
 
