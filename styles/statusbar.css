@@ -7,7 +7,8 @@
 }
 
 .statusbar-item {
-    padding: 6px;
+    margin: 4px;
+    padding: 4px;
 }
 
 #status-middle {
@@ -24,7 +25,6 @@
     display: none;
     position: absolute;
     background-color: lightgrey;
-    z-index: 9999;
     bottom: 100%;
     left: 0%;
     padding: 10px;
@@ -40,11 +40,15 @@
     display: block;
 }
 
+#appdrawer-button {
+    display: flex;
+    align-items: center;
+}
+
 #window-list {
     display: flex;
     gap: 2px;
     padding: 0;
-    margin: 2px;
     min-width: 0;
     overflow-x: scroll;
 }
