@@ -10,6 +10,7 @@ export default class ImagesApp extends Window {
       x: 120,
       y: 80,
     }, windowID);
+
     let images = [
       "cow",
       "fire",
