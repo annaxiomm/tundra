@@ -1,23 +1,31 @@
 import { openApp, getOpenWindows } from "./wm.js";
 
+const special_apps = {
+  "exit": () => {
+    console.log("quitting tundra!");
+  }
+}
+
 export function updateStatusBar() {
   let now = new Date();
   let formatted_date = now.toLocaleString();
-  document.getElementById("status_time").innerText = formatted_date;
+  document.getElementById("status-time").innerText = formatted_date;
 }
 
-document.getElementById("app-welcome").addEventListener("click", () => {
-  openApp("welcome");
-});
+Array.from(document.getElementsByClassName("appdrawer-app")).forEach((element) => {
+  element.addEventListener("click", () => {
+    let appname = element.id.slice(4);
 
-document.getElementById("app-notes").addEventListener("click", () => {
-  openApp("notes");
-});
+    // Check for special system functions e.g. Quit
+    if (appname in special_apps) {
+      special_apps[appname]();
+      return;
+    }
 
-document.getElementById("app-image").addEventListener("click", () => {
-  console.log("oh hello");
-  openApp("images");
-});
+    openApp(appname);
+
+  })
+})
 
 function updateWindowList() {
   let windowList = document.getElementById("window-list");
@@ -29,7 +37,7 @@ function updateWindowList() {
 
   Object.entries(windows).forEach(([id, window]) => {
     let element = document.createElement("div");
-    element.className = "window-list-item";
+    element.className = "window-list-item statusbar-button";
     element.innerText = window.title;
     windowList.appendChild(element);
   })

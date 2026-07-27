@@ -14,7 +14,7 @@ const windowsChangedEvent = new CustomEvent("windowschanged", {
 })
 
 export function initCaribou() {
-  openApp("welcome");
+  openApp("about");
 }
 
 export function openApp(appname) {
