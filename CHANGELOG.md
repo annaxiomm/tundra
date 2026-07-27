@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.2
+- added a window list - so now you know which windows are open
+- windows no longer focus just before being closed
+- tundra now has a logo !
+
 ## v0.1.1
 - visual updates - windows looks like SerenityOS windows now!
 - almost complete caribou overhaul

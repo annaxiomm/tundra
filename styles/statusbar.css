@@ -7,8 +7,13 @@
 }
 
 .statusbar-item {
-    margin: 4px;
-    padding: 4px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#status-time {
+    padding: 0px 5px 0px 5px;
 }
 
 #status-middle {
@@ -24,16 +29,14 @@
 #appdrawer {
     display: none;
     position: absolute;
-    background-color: lightgrey;
     bottom: 100%;
     left: 0%;
-    padding: 10px;
-}
-
-#appdrawer ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    width: 150px;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+    box-sizing: border-box;
 }
 
 #appdrawer-container:hover #appdrawer {
@@ -45,20 +48,42 @@
     align-items: center;
 }
 
+.appdrawer-app {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.appdrawer-app div {
+    padding: 7px;
+}
+
+.appdrawer-icon {
+    background: whitesmoke;
+    width: 15px;
+    text-align: center;
+}
+
+.appdrawer-label {
+    background: white;
+}
+
+
 #window-list {
     display: flex;
-    gap: 2px;
     padding: 0;
     min-width: 0;
     overflow-x: scroll;
 }
 
-.window-list-item {
-    padding: 2px;
+.statusbar-button {
+    padding: 4px;
     flex: 0 0 125px;
     border-top: 2px solid #fff;
     border-left: 2px solid #fff;
     border-right: 2px solid #555;
     border-bottom: 2px solid #555;
     box-sizing: border-box;
+    margin: 4px 2px 4px 2px;
+    display: flex;
+    align-items: center;
 }
