@@ -39,6 +39,11 @@ function updateWindowList() {
     let element = document.createElement("div");
     element.className = "window-list-item statusbar-button";
     element.innerText = window.title;
+    element.setAttribute("windowID", id);
+
+    element.addEventListener("click", () => {
+      windowListClicked(id, element);
+    })
     windowList.appendChild(element);
   })
 }
@@ -46,3 +51,12 @@ function updateWindowList() {
 document.addEventListener("windowschanged", () => {
   updateWindowList();
 });
+
+function windowListClicked(id, element) {
+  element.dispatchEvent(new CustomEvent("requestfocus", {
+    bubbles: true,
+    detail: {
+      window: id
+    }
+  }))
+}
