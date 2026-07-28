@@ -19,7 +19,6 @@ export class CubeApp extends Window {
     const renderer = new WebGLRenderer({
       antialias: true
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(196, 196);
     this.content.appendChild(renderer.domElement);
 
@@ -37,6 +36,7 @@ export class CubeApp extends Window {
     scene.add(cube);
 
     camera.position.z = 1.75;
+    camera.aspect = 1;
 
     function animate(time) {
       cube.rotation.x = time / 2000;
