@@ -38,10 +38,12 @@ export class CubeApp extends Window {
     camera.position.z = 1.75;
     camera.aspect = 1;
 
+    const offset = Math.random() * Math.PI * 2;
+
     function animate(time) {
-      cube.rotation.x = time / 2000;
-      cube.rotation.y = time / 1000;
-      renderer.render(scene, camera);
+        cube.rotation.x = time / 2000 + offset;
+        cube.rotation.y = time / 1000 + offset;
+        renderer.render(scene, camera);
     }
 
     renderer.setAnimationLoop(animate);
