@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3
+- windows now focus when their corresponding window list item is clicked
+- window list items look different when they are focused
+- css colors now use variables so theming can be added later
+
 ## v0.1.2
 - added a window list - so now you know which windows are open
 - windows no longer focus just before being closed
