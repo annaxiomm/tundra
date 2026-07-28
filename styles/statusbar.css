@@ -3,7 +3,7 @@
     grid-template-columns: auto 1fr auto;
     user-select: none;
     z-index: 9999;
-    background-color: whitesmoke;
+    background-color: var(--window-bg);
 }
 
 .statusbar-item {
@@ -32,10 +32,10 @@
     bottom: 100%;
     left: 0%;
     width: 150px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
     box-sizing: border-box;
 }
 
@@ -71,22 +71,22 @@
     padding: 0px !important;
     position: absolute;
     left: 100%;
-    background: white;
+    background: var(--window-bg-accent);
     width: 150px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
 }
 
 .appdrawer-icon {
-    background: whitesmoke;
+    background: var(--window-bg);
     width: 15px;
     text-align: center;
 }
 
 .appdrawer-label {
-    background: white;
+    background: var(--window-bg-accent);
 }
 
 
@@ -100,12 +100,20 @@
 .statusbar-button {
     padding: 4px;
     flex: 0 0 125px;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
     box-sizing: border-box;
     margin: 4px 2px 4px 2px;
     display: flex;
     align-items: center;
+}
+
+.window-list-focused {
+    background: var(--window-bg-dark);
+    border-top: 2px solid var(--window-border-2);
+    border-left: 2px solid var(--window-border-2);
+    border-right: 2px solid var(--window-border-1);
+    border-bottom: 2px solid var(--window-border-1);
 }

@@ -1,13 +1,13 @@
 .window {
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 1px solid var(--window-border-1);
+    border-left: 1px solid var(--window-border-1);
+    border-right: 1px solid var(--window-border-2);
+    border-bottom: 1px solid var(--window-border-2);
     box-sizing: border-box;
     position: absolute;
     top: 100px;
     left: 100px;
-    background: whitesmoke;
+    background: var(--window-bg);
     overflow: hidden;
     z-index: 1;
     display: grid;
@@ -15,7 +15,7 @@
 }
 
 .window .header {
-    background: linear-gradient(to right, #949494, whitesmoke);
+    background: linear-gradient(to right, #949494, var(--window-bg));
     margin: 3px;
     height: 20px;
     padding: 1px;
@@ -40,7 +40,7 @@
 }
 
 .window-title {
-    color: whitesmoke;
+    color: var(--window-bg);
     padding: 2px;
 }
 
@@ -50,7 +50,7 @@
 
 .window .window-button {
     display: inline-flex;
-    background: whitesmoke;
+    background: var(--window-bg);
     width: 15px;
     height: 15px;
     align-items: center;
@@ -60,10 +60,10 @@
     line-height: 1;
     font-family: sans-serif;
     font-weight: bold;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #555;
-    border-bottom: 1px solid #555;
+    border-top: 1px solid var(--window-border-1);
+    border-left: 1px solid var(--window-border-1);
+    border-right: 1px solid var(--window-border-2);
+    border-bottom: 1px solid var(--window-border-2);
     box-sizing: border-box;
 
 }
