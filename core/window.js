@@ -54,7 +54,7 @@ export class Window {
     this.title = title;
 
     this.div.style.width = `${width}px`;
-    this.div.style.height = `${height}px`;
+    this.div.style.height = `${height + 28}px`;
 
     this.titleElement.innerText = title;
 
