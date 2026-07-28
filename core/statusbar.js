@@ -48,9 +48,24 @@ function updateWindowList() {
   })
 }
 
+function updateFocusedWindow(id) {
+  let windowList = document.getElementById("window-list");
+  Array.from(windowList.children).forEach((window) => {
+    if (window.getAttribute("windowID") != id) {
+      window.classList.remove("window-list-focused");
+    } else {
+      window.classList.add("window-list-focused");
+    }
+  })
+}
+
 document.addEventListener("windowschanged", () => {
   updateWindowList();
 });
+
+document.addEventListener("windowfocused", (e) => {
+  updateFocusedWindow(e.detail.window);
+})
 
 function windowListClicked(id, element) {
   element.dispatchEvent(new CustomEvent("requestfocus", {

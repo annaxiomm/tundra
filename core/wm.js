@@ -30,8 +30,8 @@ export function openApp(appname) {
   let instance = new apps[appname](id);
   windows[id] = instance;
 
-  focusWindow(id);
   document.dispatchEvent(windowsChangedEvent);
+  focusWindow(id);
 }
 
 export function getOpenWindows() {
@@ -62,4 +62,11 @@ function focusWindow(windowID) {
   windows[windowID].div.classList.add("active-window");
 
   windows[windowID].div.style.zIndex = ++highestZ;
+
+  windows[windowID].div.dispatchEvent(new CustomEvent("windowfocused", {
+    bubbles: true,
+    detail: {
+      window: windowID
+    }
+  }))
 }
