@@ -3,7 +3,10 @@
 ## v0.1.2
 - added a window list - so now you know which windows are open
 - windows no longer focus just before being closed
-- tundra now has a logo !
+- tundra now has a mascot !
+- the appdrawer has been redesigned and has submenus now
+- added a three.js test app
+
 
 ## v0.1.1
 - visual updates - windows looks like SerenityOS windows now!
