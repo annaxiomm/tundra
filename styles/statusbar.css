@@ -48,13 +48,35 @@
     align-items: center;
 }
 
-.appdrawer-app {
+.appdrawer-app, .appdrawer-popout-container {
     display: grid;
     grid-template-columns: auto 1fr;
+    padding: 0px !important;
 }
 
 .appdrawer-app div {
     padding: 7px;
+}
+
+.appdrawer-popout-container div {
+    padding: 7px;
+}
+
+.appdrawer-popout-container:hover .appdrawer-popout {
+    display: block;
+}
+
+.appdrawer-popout {
+    display: none;
+    padding: 0px !important;
+    position: absolute;
+    left: 100%;
+    background: white;
+    width: 150px;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
 }
 
 .appdrawer-icon {
