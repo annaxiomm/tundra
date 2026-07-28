@@ -1,4 +1,6 @@
 import { Window } from "../../core/window";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 export class ChangelogApp extends Window {
   constructor(windowID) {
@@ -11,27 +13,29 @@ export class ChangelogApp extends Window {
       y: 100
     }, windowID)
 
-    this.content.innerHTML = `
-<div style="height: calc(100% - 10px); width: calc(100% - 10px); background: white; margin: 0; padding: 5px; overflow-y: scroll">
+    this.containerdiv = document.createElement("div");
+    this.containerdiv.style = "height: calc(100% - 10px); width: calc(100% - 10px); background: white; margin: 0; padding: 5px; overflow-y: scroll";
+    this.containerdiv.innerText = "waiting for changelog...";
 
-<h2>v0.1.1-beta</h2>
-<ul style="list-style-type: '- ';">
-<li>visual updates - windows looks like SerenityOS windows now!</li>
-<li>almost complete caribou overhaul</li>
-<ul>
-  <li>windows now request behaviour from caribou instead of doing it themselves</li>
-  <li>new focusing system!</li>
-  <li>windows now focus when you open them!</li>
-</ul>
-</ul>
-<h2>v0.1.0-alpha</h2>
-<ul style="list-style-type: '- ';">
-<li>this is the first version of tundra!</li>
-<li>added a windowing system (caribou)</li>
-<li>added 3 apps (welcome, notes, image of the day)</li>
-<li>added a sick wallpaper</li>
-</ul>
-</div>
-`
+    this.content.appendChild(this.containerdiv);
+
+    this.getChangelog();
+  }
+
+  async getChangelog() {
+    const changelog = "";
+    const url = "https://raw.githubusercontent.com/annaxiomm/tundra/refs/heads/main/CHANGELOG.md";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const result = await response.text();
+        const html = DOMPurify.sanitize(result.substring(result.indexOf('\n') + 1)); // Sanitize and remove the h1 in one step
+        this.containerdiv.innerHTML = marked.parse(html);
+      } catch (error) {
+        this.containerdiv.innerText = "failed to fetch changelog :(";
+      }
   }
 }
