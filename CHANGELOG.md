@@ -4,6 +4,7 @@
 - windows now focus when their corresponding window list item is clicked
 - window list items look different when they are focused
 - css colors now use variables so theming can be added later
+- desktop background is now loaded in javascript so it can be changed (TODO: add wallpaper changing)
 - the changelog is pulled from github so it's always up to date
 
 ## v0.1.2
