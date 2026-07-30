@@ -18,10 +18,10 @@ const windowsChangedEvent = new CustomEvent("windowschanged", {
 export function initCaribou() {
   console.log("[caribou] initialising caribou...")
   setWallpaper(defaultWallpaper);
-  openApp("about");
+  openApp("about", {beans: "hello"});
 }
 
-export function openApp(appname) {
+export function openApp(appname, params) {
   if (!Object.hasOwn(apps, appname)) {
     console.error(
       `TUNDRA: Attempting to open app "${appname}" which doesn't exist`,
@@ -31,7 +31,7 @@ export function openApp(appname) {
 
   let id = ++lastID;
 
-  let instance = new apps[appname](id);
+  let instance = new apps[appname](id, params);
   windows[id] = instance;
 
   document.dispatchEvent(windowsChangedEvent);

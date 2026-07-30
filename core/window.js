@@ -22,8 +22,9 @@ export class Window {
     height = 300,
     x = 100,
     y = 100,
-  } = {}, windowID) {
+  } = {}, windowID, params) {
     this.windowID = windowID;
+    this.params = params;
 
     // create DOM
     this.div = document.createElement("div");

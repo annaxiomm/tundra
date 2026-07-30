@@ -22,7 +22,7 @@ Array.from(document.getElementsByClassName("appdrawer-app")).forEach((element) =
       return;
     }
 
-    openApp(appname);
+    openApp(appname, {});
 
   })
 })
