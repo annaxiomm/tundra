@@ -9,11 +9,15 @@ let highestZ = 1;
 
 let focusedWindow = null;
 
+const defaultWallpaper = "images/wallpapers/pariwhero.png"
+
 const windowsChangedEvent = new CustomEvent("windowschanged", {
   bubbles: true
 })
 
 export function initCaribou() {
+  console.log("[caribou] initialising caribou...")
+  setWallpaper(defaultWallpaper);
   openApp("about");
 }
 
@@ -69,4 +73,8 @@ function focusWindow(windowID) {
       window: windowID
     }
   }))
+}
+
+function setWallpaper(wallpaper) {
+  document.getElementById("desktop").style.backgroundImage = `url(${wallpaper})`;
 }

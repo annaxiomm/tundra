@@ -16,6 +16,9 @@ function fixedUpdate() {
 
 // runs when the "OS" loads
 function onStart() {
-  // initialise the window managers
+  console.log("┏━━━━━━━━━━━━━━━━━━━━┓")
+  console.log("┃ welcome to tundra! ┃")
+  console.log("┗━━━━━━━━━━━━━━━━━━━━┛")
+  // initialise the window manager
   initCaribou();
 }
