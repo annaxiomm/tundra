@@ -36,6 +36,7 @@ function updateWindowList() {
   })
 
   Object.entries(windows).forEach(([id, window]) => {
+    if (!window.list_visible) { return }
     let element = document.createElement("div");
     element.className = "window-list-item statusbar-button";
     element.innerText = window.title;

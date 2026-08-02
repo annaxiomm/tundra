@@ -1,2 +1,5 @@
 @import url(apps/changelog.css);
 @import url(apps/cube.css);
+
+@import url(dialogs/dialog.css);
+@import url(dialogs/confirm.css);

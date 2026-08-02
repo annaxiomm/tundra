@@ -10,6 +10,7 @@
     --window-fg: #000000;
     --window-border-1: #ffffff;
     --window-border-2: #555555;
+    --main-font: "Cozette";
 }
 
 body,
@@ -18,7 +19,7 @@ html {
     padding: 0;
     overflow: hidden;
 
-    font-family: "Cozette";
+    font-family: var(--main-font);
     font-weight: normal;
 }
 

@@ -2,6 +2,9 @@
 
 import { apps } from "./apps.js";
 
+import { ConfirmDialog } from "../apps/dialog/confirm.js";
+import { requestFullscreen } from "./kernel.js";
+
 export let windows = {};
 let lastID = 0;
 
@@ -18,7 +21,11 @@ const windowsChangedEvent = new CustomEvent("windowschanged", {
 export function initCaribou() {
   console.log("[caribou] initialising caribou...")
   setWallpaper(defaultWallpaper);
-  openApp("about", {beans: "hello"});
+  openApp("about", {});
+  let x = openDialog(ConfirmDialog, { title: "enable fullscreen?", message: "Would you like to enable fullscreen mode?"});
+  x.then((response) => {
+    if (response == "ok") { requestFullscreen() };
+  })
 }
 
 export function openApp(appname, params) {
@@ -36,6 +43,26 @@ export function openApp(appname, params) {
 
   document.dispatchEvent(windowsChangedEvent);
   focusWindow(id);
+}
+
+export function openAppByClass(classname, params) {
+  let id = ++lastID;
+
+  let instance = new classname(id, params);
+  windows[id] = instance;
+
+  document.dispatchEvent(windowsChangedEvent);
+  focusWindow(id);
+}
+
+export function openDialog(dialog, params) {
+  return new Promise((resolve, reject) => {
+    openAppByClass(dialog, {
+      resolve,
+      reject,
+      ...params
+    });
+  })
 }
 
 export function getOpenWindows() {

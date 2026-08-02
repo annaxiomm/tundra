@@ -14,6 +14,10 @@ OTHER WINDOW STUFF
 - windows should not manage themselves: they should send a request to the windowmanager first
 */
 
+const windowsChangedEvent = new CustomEvent("windowschanged", {
+  bubbles: true
+})
+
 export class Window {
   constructor({
     title = "Untitled",
@@ -22,6 +26,7 @@ export class Window {
     height = 300,
     x = 100,
     y = 100,
+    list_visible = true, // is it visible in the window list?
   } = {}, windowID, params) {
     this.windowID = windowID;
     this.params = params;
@@ -56,6 +61,10 @@ export class Window {
 
     this.div.style.width = `${width}px`;
     this.div.style.height = `${height + 28}px`;
+    this.width = width;
+    this.height = height;
+
+    this.list_visible = list_visible;
 
     this.titleElement.innerText = title;
 
@@ -110,11 +119,30 @@ export class Window {
   }
 
   closeWindow() {
+    this.onClose();
     this.div.dispatchEvent(new CustomEvent("requestclose", {
       bubbles: true,
       detail: {
         window: this.windowID,
       }
     }))
+  }
+
+  setTitle(title) {
+    this.title = title;
+    this.titleElement.innerText = this.title;
+    document.dispatchEvent(windowsChangedEvent);
+  }
+
+  setContent(content) {
+    this.content.innerHTML = content;
+  }
+
+  addClass(classname) {
+    this.div.classList.add(classname);
+  }
+
+  onClose() {
+    // to be implemented by apps
   }
 }

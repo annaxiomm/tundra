@@ -1,0 +1,30 @@
+.dialog .content {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.dialog-actions {
+    text-align: right;
+}
+
+.dialog-actions button {
+    margin: 5px;
+    min-width: 80px;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
+    background-color: var(--window-bg);
+    padding: 4px;
+    font-family: var(--main-font);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.dialog-actions button:active {
+    background: var(--window-bg-dark);
+    border-top: 2px solid var(--window-border-2);
+    border-left: 2px solid var(--window-border-2);
+    border-right: 2px solid var(--window-border-1);
+    border-bottom: 2px solid var(--window-border-1);
+}
