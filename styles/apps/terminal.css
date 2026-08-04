@@ -1,0 +1,32 @@
+.terminal {
+    --term-bg: black;
+    --term-fg: white;
+}
+
+.terminal .content {
+    padding: 0;
+    display: flex;
+}
+
+.terminal-term {
+    flex: 1;
+    box-sizing: border-box;
+    min-height: 0;
+    min-width: 0;
+    padding: 5px;
+    background: var(--term-bg);
+    color: var(--term-fg);
+    overflow-y: scroll;
+    white-space: pre;
+}
+
+.terminal-input {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    background-color: var(--term-bg);
+    color: var(--term-fg);
+    font-family: var(--main-font);
+    font-size: 1em;
+}

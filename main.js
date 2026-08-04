@@ -1,6 +1,6 @@
 import { updateStatusBar } from "./core/statusbar.js";
 import { initCaribou } from "./core/wm.js";
-import { fs } from "./core/fs.js";
+import { fs, initFilesystem } from "./core/fs.js";
 
 setInterval(() => {
   fixedUpdate();
@@ -20,16 +20,8 @@ function onStart() {
   console.log("┏━━━━━━━━━━━━━━━━━━━━┓")
   console.log("┃ welcome to tundra! ┃")
   console.log("┗━━━━━━━━━━━━━━━━━━━━┛")
-  // initialise the window manager
-  initCaribou();
 
-  // filesystem tests
-  fs.resolve("/test"); // should error
-  fs.mkdir("/test");
-  console.log(fs.resolve("/test"));
-  fs.touch("/test/test.txt");
-  console.log(fs.resolve("/test/test.txt"));
-  fs.writeFile("/test/test.txt", "this is a tundra filesystem test");
-  console.log(fs.readFile("/test/test.txt"));
-  console.log(fs.ls("/"));
+  // initialise core processes and things
+  initFilesystem();
+  initCaribou();
 }

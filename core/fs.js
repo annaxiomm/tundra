@@ -5,14 +5,14 @@ class FSNode {
   }
 }
 
-class File extends FSNode {
+export class File extends FSNode {
   constructor(name, contents) {
     super(name, "file");
     this.contents = contents;
   }
 }
 
-class Directory extends FSNode {
+export class Directory extends FSNode {
   constructor(name) {
     super(name, "directory");
     this.children = new Map();
@@ -90,6 +90,48 @@ class FileSystem {
 
     return [...dir.children.keys()];
   }
+
+  // converts relative path to absolute path
+  // e.g. starting from "/bin", "../home" -> "/home"
+  resolvePath(currentdir, path) {
+    if (path.startsWith("/"))
+      return path;
+
+    if (path === "~")
+      return "/home/anon";
+
+    if (path.startsWith("~/"))
+      return "/home/anon" + path.slice(2);
+
+    const stack = currentdir.split("/").filter(Boolean);
+
+    for (const part of path.split("/")) {
+      if (part === "" || part === ".")
+        continue;
+
+      if (part === "..") {
+        if (stack.length)
+          stack.pop();
+      } else {
+        stack.push(part);
+      }
+    }
+    return "/" + stack.join("/");
+  }
 }
 
 export var fs = new FileSystem();
+
+// sets up the filesystem with a basic fileset
+export function initFilesystem() {
+  console.log("[filesystem] initialising filesystem...");
+
+  fs.mkdir("/bin");
+  fs.mkdir("/boot");
+  fs.mkdir("/dev");
+  fs.mkdir("/etc");
+  fs.mkdir("/usr/bin");
+  fs.mkdir("/home/anon");
+  fs.touch("/home/anon/README");
+  fs.writeFile("/home/anon/README", "congrats! you found the *secret*");
+}

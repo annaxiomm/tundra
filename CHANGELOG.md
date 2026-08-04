@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.4
+- added a basic filesystem
+- added a terminal app
+- added terminal commands:
+  - cat
+  - ls
+  - cd
+  - mkdir
+  - touch
+  - fetch
+
 ## v0.1.3
 - windows now focus when their corresponding window list item is clicked
 - window list items look different when they are focused

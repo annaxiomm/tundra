@@ -3,7 +3,7 @@
 import { apps } from "./apps.js";
 
 import { ConfirmDialog } from "../apps/dialog/confirm.js";
-import { requestFullscreen } from "./kernel.js";
+import { syscall } from "./kernel.js";
 
 export let windows = {};
 let lastID = 0;
@@ -24,7 +24,7 @@ export function initCaribou() {
   openApp("about", {});
   let x = openDialog(ConfirmDialog, { title: "enable fullscreen?", message: "Would you like to enable fullscreen mode?"});
   x.then((response) => {
-    if (response == "ok") { requestFullscreen() };
+    if (response == "ok") { syscall("fullscreen") };
   })
 }
 
