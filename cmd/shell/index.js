@@ -1,6 +1,7 @@
 import { Cmd } from "../../core/cmd";
 import { fs, Directory } from "../../core/fs";
 import { openApp } from "../../core/wm";
+import { truncateDir } from "../../core/util";
 
 export class ShellCmd extends Cmd {
   constructor(termcontext, currentdir, argv) {
@@ -11,9 +12,8 @@ export class ShellCmd extends Cmd {
 
   async run() {
     while (true) {
-      this.termcontext.setTitle(this.currentdir);
-      let dirname = this.currentdir;
-      if (this.currentdir == "/home/anon") dirname = "~";
+      let dirname = truncateDir(this.currentdir);
+      this.termcontext.setTitle(dirname);
       this.termcontext.write(`anon@tundra ${dirname} $ `);
       let input = await this.termcontext.readline();
       let parts = input.split(" ");

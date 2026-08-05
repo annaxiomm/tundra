@@ -1,3 +1,4 @@
+import { truncateString } from "./util.js";
 import { openApp, getOpenWindows } from "./wm.js";
 
 const special_apps = {
@@ -39,7 +40,7 @@ function updateWindowList() {
     if (!window.list_visible) { return }
     let element = document.createElement("div");
     element.className = "window-list-item statusbar-button";
-    element.innerText = window.title;
+    element.innerText = truncateString(window.title, 12);
     element.setAttribute("windowID", id);
 
     element.addEventListener("click", () => {
