@@ -29,6 +29,12 @@ export class ShellCmd extends Cmd {
         case "mkdir":
           this.mkdir(parts.join(" "));
           break;
+        case "touch":
+          this.touch(parts.join(" "));
+          break;
+        case "help":
+          this.help();
+          break;
         default:
           let output = await this.termcontext.exec(cmdname, this.currentdir, parts);
           if (output == 999) { // command not found
@@ -64,5 +70,21 @@ export class ShellCmd extends Cmd {
 
   mkdir(dir) {
     fs.mkdir(this.currentdir + "/" + dir);
+  }
+
+  touch(file) {
+    fs.touch(this.currentdir + "/" + file);
+  }
+
+  help() {
+    this.termcontext.writeln("tundra-shell version 0.1");
+    this.termcontext.writeln("this is a list of internally defined commands;\nsee /bin for all commands\n");
+    this.termcontext.writeln("help          show this menu");
+    this.termcontext.writeln("exit          quit this tundra-shell session");
+    this.termcontext.writeln("cd [dir]      change directory to [dir]");
+    this.termcontext.writeln("mkdir [dir]   make a new directory named [dir]");
+    this.termcontext.writeln("ls            list the current directory");
+    this.termcontext.writeln("touch [file]  create a new file named [file]");
+
   }
 }
