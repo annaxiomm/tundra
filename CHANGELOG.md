@@ -10,6 +10,7 @@
   - mkdir
   - touch
   - fetch
+  - open (opens GUI applications)
 
 ## v0.1.3
 - windows now focus when their corresponding window list item is clicked

@@ -1,5 +1,6 @@
 import { Cmd } from "../../core/cmd";
 import { fs, Directory } from "../../core/fs";
+import { openApp } from "../../core/wm";
 
 export class ShellCmd extends Cmd {
   constructor(termcontext, currentdir, argv) {
@@ -34,6 +35,9 @@ export class ShellCmd extends Cmd {
           break;
         case "help":
           this.help();
+          break;
+        case "open":
+          this.openapp(parts.join(" "));
           break;
         default:
           let output = await this.termcontext.exec(cmdname, this.currentdir, parts);
@@ -76,6 +80,10 @@ export class ShellCmd extends Cmd {
     fs.touch(this.currentdir + "/" + file);
   }
 
+  openapp(app) {
+    openApp(app, {});
+  }
+
   help() {
     this.termcontext.writeln("tundra-shell version 0.1");
     this.termcontext.writeln("this is a list of internally defined commands;\nsee /bin for all commands\n");
@@ -85,6 +93,7 @@ export class ShellCmd extends Cmd {
     this.termcontext.writeln("mkdir [dir]   make a new directory named [dir]");
     this.termcontext.writeln("ls            list the current directory");
     this.termcontext.writeln("touch [file]  create a new file named [file]");
-
+    this.termcontext.writeln("open [app]    open the GUI application [app]");
+    this.termcontext.writeln("              (i.e. one from the app drawer)");
   }
 }
