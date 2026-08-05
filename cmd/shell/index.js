@@ -12,7 +12,9 @@ export class ShellCmd extends Cmd {
   async run() {
     while (true) {
       this.termcontext.setTitle(this.currentdir);
-      this.termcontext.write(`anon@tundra ${this.currentdir} $ `);
+      let dirname = this.currentdir;
+      if (this.currentdir == "/home/anon") dirname = "~";
+      this.termcontext.write(`anon@tundra ${dirname} $ `);
       let input = await this.termcontext.readline();
       let parts = input.split(" ");
 
@@ -25,7 +27,7 @@ export class ShellCmd extends Cmd {
           this.chdir(parts.join(" "));
           break;
         case "ls":
-          this.lsdir();
+          this.lsdir(parts.join(" "));
           break;
         case "mkdir":
           this.mkdir(parts.join(" "));
@@ -65,8 +67,27 @@ export class ShellCmd extends Cmd {
     this.currentdir = newdir;
   }
 
-  lsdir() {
+  lsdir(dir) {
+    console.log(dir);
     let dircontents = fs.ls(this.currentdir);
+    if (dir != "") {
+      let newdir = fs.resolvePath(this.currentdir, dir);
+
+      let node = fs.resolve(newdir);
+      if (!node) {
+        this.termcontext.writeln(`ls: no such file or directory: ${dir}`);
+        return;
+      }
+
+      if (!(node instanceof Directory)) {
+        this.termcontext.writeln(`ls: not a directory: ${dir}`);
+        return;
+      }
+
+      dircontents = fs.ls(newdir);
+    }
+
+
     dircontents.forEach((e) => {
       this.termcontext.writeln(e);
     })

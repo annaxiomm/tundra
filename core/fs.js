@@ -134,4 +134,12 @@ export function initFilesystem() {
   fs.mkdir("/home/anon");
   fs.touch("/home/anon/README");
   fs.writeFile("/home/anon/README", "congrats! you found the *secret*");
+
+  loadCmdsNames();
+}
+
+function loadCmdsNames() {
+  fs.touch("/bin/cat");
+  fs.touch("/bin/shell");
+  fs.touch("/bin/fetch");
 }

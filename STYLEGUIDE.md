@@ -9,4 +9,4 @@ this is just personal reference so I can stay consistent
 - all commits should be prefixes with the area of tundra that you changed
   - e.g. `terminal: added ANSI codes`
   - `kernel: added syscalls`
-  - `appdrawer: fixed memory leak
+  - `appdrawer: fixed memory leak
