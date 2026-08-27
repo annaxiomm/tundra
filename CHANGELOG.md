@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.5
+- added a bunch of new apps:
+  - colour picker
+  - browser that doesn't really work
+
 ## v0.1.4
 - added a basic filesystem
 - added a terminal app

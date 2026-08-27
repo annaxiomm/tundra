@@ -1,0 +1,61 @@
+.browser .content {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.browser .browser-top-bar {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+}
+
+.browser-input {
+    margin: 2px;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
+    padding: 4px;
+    font-family: var(--main-font);
+    font-size: 1em;
+    cursor: text;
+}
+
+.browser-back, .browser-forward {
+    width: 30px;
+}
+
+.browser-input:focus {
+    border-bottom: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-2);
+    border-top: 2px solid var(--window-border-2);
+    outline: none;
+}
+
+.browser iframe {
+    height: 100%;
+    width: 100%;
+}
+
+.browser-error {
+    padding: 10px;
+}
+
+.browser-error h1 {
+    margin: 0;
+}
+
+.browser-button {
+    margin: 2px;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
+    background-color: var(--window-bg);
+    padding: 4px;
+    font-family: var(--main-font);
+    font-size: 1em;
+    cursor: pointer;
+}
