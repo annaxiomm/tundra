@@ -19,12 +19,7 @@ export class DialogApp extends Window {
     this.setTitle(params.title);
     let x = (document.getElementById("desktop").getBoundingClientRect().width / 2) - (this.width / 2);
     let y = (document.getElementById("desktop").getBoundingClientRect().height / 2) - (this.height / 2);
-    console.log(document.getElementById("desktop").getBoundingClientRect().width)
-    console.log(this.width)
-    console.log(x, y);
     this.move(x, y)
-
-    console.log(this.content);
 
     this.dialogContent = document.createElement("div");
     this.dialogContent.className = "dialog-content";

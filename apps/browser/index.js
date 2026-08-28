@@ -1,3 +1,5 @@
+// browser - very very broken
+
 import { Window } from "../../core/window";
 
 export class BrowserApp extends Window {

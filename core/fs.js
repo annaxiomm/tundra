@@ -29,13 +29,15 @@ class FileSystem {
     let current = this.root;
 
     for (const part of parts) {
-      if (!(current instanceof Directory))
-        console.error("not a directory!");
+      if (!(current instanceof Directory)) {
+        return null;
+      }
 
       current = current.children.get(part);
 
-      if (!current)
-        console.error("path not found!")
+      if (!current) {
+        return null;
+      }
     }
 
     return current;

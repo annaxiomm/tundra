@@ -68,10 +68,14 @@ export class ShellCmd extends Cmd {
   }
 
   lsdir(dir) {
-    console.log(dir);
     let dircontents = fs.ls(this.currentdir);
     if (dir != "") {
       let newdir = fs.resolvePath(this.currentdir, dir);
+
+      if (!newdir) {
+        this.termcontext.writeln(`ls: no such file or directory: ${dir}`);
+        return;
+      }
 
       let node = fs.resolve(newdir);
       if (!node) {
