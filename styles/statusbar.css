@@ -79,6 +79,11 @@
     border-bottom: 2px solid var(--window-border-2);
 }
 
+.up {
+    bottom: 50% !important;
+}
+
+
 .appdrawer-icon {
     background: var(--window-bg);
     width: 15px;

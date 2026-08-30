@@ -4,6 +4,7 @@
 @import url(apps/browser.css);
 @import url(apps/colours.css);
 @import url(apps/calculator.css);
+@import url(apps/files.css);
 
 @import url(dialogs/dialog.css);
 @import url(dialogs/confirm.css);

@@ -93,6 +93,27 @@ class FileSystem {
     return [...dir.children.keys()];
   }
 
+  // more comprehensive ls
+  listDir(path) {
+    const dir = this.resolve(path);
+    if (!(dir instanceof Directory)) {
+      console.error("not a directory!");
+      return;
+    }
+
+    let dir_list = [];
+
+    Array.from(dir.children.keys()).forEach((e) => {
+      let file_object = fs.resolve(path + "/" + e);
+      dir_list.push({
+        name: file_object.name,
+        type: file_object.type
+      })
+    })
+
+    return dir_list;
+  }
+
   // converts relative path to absolute path
   // e.g. starting from "/bin", "../home" -> "/home"
   resolvePath(currentdir, path) {
@@ -128,20 +149,19 @@ export var fs = new FileSystem();
 export function initFilesystem() {
   console.log("[filesystem] initialising filesystem...");
 
-  fs.mkdir("/bin");
   fs.mkdir("/boot");
   fs.mkdir("/dev");
   fs.mkdir("/etc");
   fs.mkdir("/usr/bin");
   fs.mkdir("/home/anon");
-  fs.touch("/home/anon/README");
-  fs.writeFile("/home/anon/README", "congrats! you found the *secret*");
+  fs.touch("/home/anon/README.txt");
+  fs.writeFile("/home/anon/README.txt", "congrats! you found the *secret*");
 
   loadCmdsNames();
 }
 
 function loadCmdsNames() {
-  fs.touch("/bin/cat");
-  fs.touch("/bin/shell");
-  fs.touch("/bin/fetch");
+  fs.touch("/usr/bin/cat");
+  fs.touch("/usr/bin/shell");
+  fs.touch("/usr/bin/fetch");
 }
