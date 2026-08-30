@@ -6,7 +6,7 @@ export class CalculatorApp extends Window {
       title: "calculator",
       id: "calculator",
       width: 300,
-      height: 350,
+      height: 310,
       x: 100,
       y: 100
     }, windowID)
