@@ -4,6 +4,7 @@
 - added a bunch of new apps:
   - colour picker
   - browser that doesn't really work
+  - calculator
 
 ## v0.1.4
 - added a basic filesystem

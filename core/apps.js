@@ -5,6 +5,7 @@ import { CubeApp } from "../apps/cube";
 import { DialogApp } from "../apps/dialog";
 import { TerminalApp } from "../apps/terminal";
 import { ColoursApp } from "../apps/colours";
+import { CalculatorApp } from "../apps/calculator";
 
 export const apps = {
   about: AboutApp,
@@ -13,6 +14,7 @@ export const apps = {
   terminal: TerminalApp,
   browser: BrowserApp,
   colours: ColoursApp,
+  calculator: CalculatorApp,
 
   dialog: DialogApp
 }
