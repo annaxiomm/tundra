@@ -7,8 +7,4 @@ export default defineConfig({
   plugins: [
     mkcert(),  // ← Enables HTTPS locally
   ],
-  input: {
-    main: resolve(import.meta.dirname, 'index.html'),
-    homepage: resolve(import.meta.dirname, 'homepage.html')
-  }
 })
