@@ -26,7 +26,7 @@ export class BrowserApp extends Window {
     let back = document.createElement("button");
     let forward = document.createElement("button");
     this.searchbar.className = "browser-input";
-    this.searchbar.value = "https://annaxiomm.github.io"
+    this.searchbar.placeholder = "type a url..."
     submit.innerText = "Search";
     submit.className = "browser-submit browser-button";
     back.innerText = "<";
@@ -67,6 +67,12 @@ export class BrowserApp extends Window {
       this.forward();
     });
 
+    this.searchbar.addEventListener("keypress", (e) => {
+      if (e.key == "Enter") {
+        this.navigate_to(this.searchbar.value)
+      }
+    })
+
     this.browser_window.onload = () => {
       this.error.style.display = "none";
       this.browser_window.style.display = "block";
@@ -75,7 +81,7 @@ export class BrowserApp extends Window {
       this.searchbar.value = this.browser_window.contentWindow.location.href;
     };
 
-    this.navigate_to("annaxiomm.github.io");
+    this.navigate_to("annaxiomm.github.io/tundra/homepage.html");
   }
 
   navigate_to(url) {
