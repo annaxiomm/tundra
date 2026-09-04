@@ -1,9 +1,10 @@
+import { syscall } from "./kernel.js";
 import { truncateString } from "./util.js";
 import { openApp, getOpenWindows } from "./wm.js";
 
 const special_apps = {
   "exit": () => {
-    console.log("quitting tundra!");
+    syscall("shutdown");
   }
 }
 
