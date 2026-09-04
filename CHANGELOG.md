@@ -1,10 +1,14 @@
 # Changelog
 
+## v0.1.6
+- added a proper shutdown sequence
+
 ## v0.1.5
 - added a bunch of new apps:
   - colour picker
   - browser that doesn't really work
   - calculator
+  - file explorer
 
 ## v0.1.4
 - added a basic filesystem

@@ -1,6 +1,6 @@
 {
   "name": "tundra",
-  "version": "0.1.4-beta",
+  "version": "0.1.6-beta",
   "private": true,
   "type": "module",
   "scripts": {
