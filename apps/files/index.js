@@ -73,6 +73,11 @@ export class FilesApp extends Window {
               file_icon.src = "images/text.png";
               break;
           }
+          file.addEventListener("click", () => {
+            let x = fs.resolve(fs.resolvePath(this.current_dir, e.name));
+            console.log(x.contents);
+          })
+
           break;
         default:
           file_icon.src = "";

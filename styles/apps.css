@@ -5,6 +5,8 @@
 @import url(apps/colours.css);
 @import url(apps/calculator.css);
 @import url(apps/files.css);
+@import url(apps/texteditor.css);
 
 @import url(dialogs/dialog.css);
 @import url(dialogs/confirm.css);
+@import url(dialogs/save.css);

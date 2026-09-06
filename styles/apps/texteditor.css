@@ -1,0 +1,51 @@
+.texteditor .content {
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 5px;
+    gap: 5px;
+}
+
+.texteditor-editor {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
+    box-sizing: border-box;
+}
+
+.texteditor-editor:focus {
+    outline: none;
+}
+
+.texteditor-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.texteditor-buttons span {
+    margin-left: 10px;
+}
+
+.texteditor-button {
+    border-top: 2px solid var(--window-border-1);
+    border-left: 2px solid var(--window-border-1);
+    border-right: 2px solid var(--window-border-2);
+    border-bottom: 2px solid var(--window-border-2);
+    background-color: var(--window-bg);
+    padding: 4px;
+    font-family: var(--main-font);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.texteditor-button:active {
+    border-top: 2px solid var(--window-border-2);
+    border-left: 2px solid var(--window-border-2);
+    border-right: 2px solid var(--window-border-1);
+    border-bottom: 2px solid var(--window-border-1);
+}

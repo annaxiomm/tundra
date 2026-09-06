@@ -100,6 +100,11 @@
     padding: 0;
     min-width: 0;
     overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+#window-list::-webkit-scrollbar {
+    display: none;
 }
 
 .statusbar-button {

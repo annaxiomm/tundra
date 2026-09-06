@@ -101,6 +101,13 @@ export class Window {
     this.div.style.top = String(this.y) + "px";
   }
 
+  resize(width, height) {
+    this.div.style.width = `${width}px`;
+    this.div.style.height = `${height + 28}px`;
+    this.width = width;
+    this.height = height;
+  }
+
   startDrag(initialEvent) {
     let offsetX = initialEvent.clientX - this.x;
     let offsetY = initialEvent.clientY - this.y;
