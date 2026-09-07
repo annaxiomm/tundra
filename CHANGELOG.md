@@ -1,7 +1,11 @@
 # Changelog
 
+## v0.1.7
+- gave all apps icons
+
 ## v0.1.6
 - added a proper shutdown sequence
+- added a text editor
 
 ## v0.1.5
 - added a bunch of new apps:
