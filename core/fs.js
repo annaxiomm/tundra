@@ -236,6 +236,7 @@ export async function initFilesystem() {
         fs.touch("/home/anon/README.txt");
         fs.writeFile("/home/anon/README.txt", "congrats! you found the *secret*");
         loadCmdsNames();
+        resolve();
 
       } else {
         boot_write(WriteType.OK, "Found!")
