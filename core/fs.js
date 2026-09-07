@@ -1,3 +1,5 @@
+import { WriteType, boot_write } from "./boot";
+
 class FSNode {
   constructor(name, type) {
     this.name = name;
@@ -13,9 +15,9 @@ export class File extends FSNode {
 }
 
 export class Directory extends FSNode {
-  constructor(name) {
+  constructor(name, children = new Map()) {
     super(name, "directory");
-    this.children = new Map();
+    this.children = children;
   }
 }
 
@@ -53,6 +55,8 @@ class FileSystem {
 
       current = current.children.get(part);
     }
+
+    this.save();
   }
 
   touch(path) {
@@ -61,6 +65,8 @@ class FileSystem {
     const dir = this.resolve("/" + parts.join("/"));
 
     dir.children.set(filename, new File(filename, ""));
+
+    this.save();
   }
 
   readFile(path) {
@@ -81,6 +87,8 @@ class FileSystem {
     }
 
     file.contents = contents;
+
+    this.save();
   }
 
   ls(path) {
@@ -141,23 +149,104 @@ class FileSystem {
     }
     return "/" + stack.join("/");
   }
+
+  serializeNode(node) {
+    if (node instanceof File) {
+      return {
+        type: "file",
+        name: node.name,
+        contents: node.contents
+      };
+    }
+
+    if (node instanceof Directory) {
+      return {
+        type: "directory",
+        name: node.name,
+        children: Array.from(node.children.values()).map((child) => {
+          return this.serializeNode(child);
+        })
+      };
+    }
+
+    return null;
+  }
+
+  deserializeNode(json) {
+    if (json.type == "file") {
+      return new File(json.name, json.contents);
+    }
+
+    if (json.type == "directory") {
+      const children = new Map(
+        json.children.map((child) => {
+          const node = this.deserializeNode(child);
+          return [node.name, node];
+        })
+      );
+      return new Directory(json.name, children)
+    }
+
+    return null;
+  }
+
+  toJSON() {
+    return JSON.stringify(this.serializeNode(this.resolve("/")));
+  }
+
+  save() {
+    window.localStorage.setItem("filesystem", this.toJSON());
+  }
+
+  load() {
+    let raw = window.localStorage.getItem("filesystem");
+
+    if (raw == null) {
+      return false;
+    }
+
+    try {
+      this.root = this.deserializeNode(JSON.parse(raw));
+      return true;
+    } catch(error) {
+      boot_write(WriteType.ERR, "Failed to load saved filesystem! Creating a new one")
+      return null;
+    }
+  }
 }
 
 export var fs = new FileSystem();
 
 // sets up the filesystem with a basic fileset
-export function initFilesystem() {
-  console.log("[filesystem] initialising filesystem...");
+export async function initFilesystem() {
+  return new Promise((resolve) => {
+    boot_write(WriteType.OK, "Initialising filesystem")
 
-  fs.mkdir("/boot");
-  fs.mkdir("/dev");
-  fs.mkdir("/etc");
-  fs.mkdir("/usr/bin");
-  fs.mkdir("/home/anon");
-  fs.touch("/home/anon/README.txt");
-  fs.writeFile("/home/anon/README.txt", "congrats! you found the *secret*");
+    boot_write(WriteType.OK, "Looking for existing filesystem in local storage...")
+    setTimeout(() => {
+      if (!fs.load()) {
+        boot_write(WriteType.OK, "Existing filesystem not found, creating a new one")
 
-  loadCmdsNames();
+        boot_write(WriteType.OK, "Writing base directories")
+        fs.mkdir("/boot");
+        fs.mkdir("/dev");
+        fs.mkdir("/etc");
+        fs.mkdir("/usr/bin");
+        fs.mkdir("/home/anon");
+        fs.touch("/home/anon/README.txt");
+        fs.writeFile("/home/anon/README.txt", "congrats! you found the *secret*");
+        loadCmdsNames();
+
+      } else {
+        boot_write(WriteType.OK, "Found!")
+        boot_write(WriteType.OK, "Loading filesystem...")
+        setTimeout(() => {
+          boot_write(WriteType.OK, "Done!")
+          resolve();
+        }, 300)
+      }
+    }, 300)
+    })
 }
 
 function loadCmdsNames() {

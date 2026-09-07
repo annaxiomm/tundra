@@ -40,9 +40,19 @@ function updateWindowList() {
   Object.entries(windows).forEach(([id, window]) => {
     if (!window.list_visible) { return }
     let element = document.createElement("div");
+    let title = document.createElement("span");
+    let icon = document.createElement("img");
+
     element.className = "window-list-item statusbar-button";
-    element.innerText = truncateString(window.title, 12);
+    title.innerText = truncateString(window.title, 12);
+    icon.src = `images/icons/${window.id}.png`
+    icon.className = "statusbar-icon";
     element.setAttribute("windowID", id);
+
+    console.log(window);
+
+    element.appendChild(icon);
+    element.appendChild(title);
 
     element.addEventListener("click", () => {
       windowListClicked(id, element);

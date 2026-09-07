@@ -88,6 +88,7 @@
     background: var(--window-bg);
     width: 15px;
     text-align: center;
+    image-rendering: pixelated;
 }
 
 .appdrawer-label {
@@ -103,13 +104,18 @@
     scrollbar-width: none;
 }
 
+.statusbar-icon {
+    margin-right: 5px;
+    image-rendering: pixelated;
+}
+
 #window-list::-webkit-scrollbar {
     display: none;
 }
 
 .statusbar-button {
     padding: 4px;
-    flex: 0 0 125px;
+    flex: 0 0 145px;
     border-top: 2px solid var(--window-border-1);
     border-left: 2px solid var(--window-border-1);
     border-right: 2px solid var(--window-border-2);

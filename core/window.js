@@ -31,12 +31,15 @@ export class Window {
     this.windowID = windowID;
     this.params = params;
 
+    this.id = id;
+
     // create DOM
     this.div = document.createElement("div");
     this.div.className = `window ${id}`;
 
     this.div.innerHTML = `
 <div class="header">
+  <img class="window-icon" />
   <div class="window-title"></div>
   <div class="window-buttons">
     <span class="close-window window-button">×</span>
@@ -52,6 +55,7 @@ export class Window {
     this.closeButton = this.div.querySelector(".close-window");
     this.content = this.div.querySelector(".content");
     this.titleElement = this.div.querySelector(".window-title");
+    this.windowIcon = this.div.querySelector(".window-icon");
 
     // position, width, and other metadata
     const rect = this.div.getBoundingClientRect();
@@ -67,6 +71,8 @@ export class Window {
     this.list_visible = list_visible;
 
     this.titleElement.innerText = title;
+
+    this.windowIcon.src = `images/icons/${id}.png`;
 
     // click events
     this.header.addEventListener("mousedown", (e) => {

@@ -61,7 +61,8 @@ export class TextEditorApp extends Window {
     if (this.filename == "Untitled") {
 
       let filename = openDialog(SaveDialog, {
-        default_name: "untitled.txt"
+        default_name: "untitled.txt",
+        title: "open file"
       })
 
       filename.then((response) => {
@@ -78,7 +79,7 @@ export class TextEditorApp extends Window {
   }
 
   open_file() {
-    let x = openDialog(OpenDialog)
+    let x = openDialog(OpenDialog, {default_name: "untitled.txt", title: "open file"})
 
     x.then((response) => {
       if (response != null) {

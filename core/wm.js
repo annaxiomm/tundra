@@ -4,6 +4,7 @@ import { apps } from "./apps.js";
 
 import { ConfirmDialog } from "../apps/dialog/confirm.js";
 import { syscall } from "./kernel.js";
+import { boot_write, WriteType } from "./boot.js";
 
 export let windows = {};
 let lastID = 0;
@@ -19,7 +20,7 @@ const windowsChangedEvent = new CustomEvent("windowschanged", {
 })
 
 export function initCaribou() {
-  console.log("[caribou] initialising caribou...")
+  boot_write(WriteType.OK, "Initialising windowing system")
   setWallpaper(defaultWallpaper);
   openApp("about", {});
   let x = openDialog(ConfirmDialog, { title: "enable fullscreen?", message: "Would you like to enable fullscreen mode?"});
