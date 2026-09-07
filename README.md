@@ -2,10 +2,14 @@
 an entire (?) operating system localised entirely within your browser!
 ![a screenshot of an OS desktop](public/images/promo.png)
 ## features
-- a nice welcome
-- a notes app with a TODO list and a changelog
-- a collection of images taken by [yours truly](https://github.com/annaxiomm)
-- and thats it so far, but many more are to come soon !
+- plenty of apps
+- a working dialog system
+- cool icons for every app
+- a filesystem
+- a couple of terminal commands (including ~~neo~~fetch!)
+## usage
+1. go to [the website](https://annaxiomm.github.io/tundra)
+2. have fun!
 ## changelog
 [see here](CHANGELOG.md)
 ## credits
